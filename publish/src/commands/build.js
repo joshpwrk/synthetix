@@ -50,7 +50,7 @@ const build = async ({
 	// if there's a naming clash our code wins.
 	console.log(gray('Finding .sol files...'));
 	const libraries = findSolFiles({
-		sourcePath: path.join(__dirname, '..', '..', '..', 'node_modules'),
+		sourcePath: path.join(__dirname, '..', '..', '..', 'libs'),
 	});
 	const contracts = findSolFiles({
 		sourcePath: path.join(__dirname, '..', '..', '..', CONTRACTS_FOLDER),
