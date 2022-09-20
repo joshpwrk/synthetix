@@ -11,7 +11,6 @@ module.exports = async ({
 	runStep,
 	deploymentPath,
 	network,
-	useOvm,
 }) => {
 	const { ReadProxyAddressResolver } = deployer.deployedContracts;
 
@@ -28,14 +27,10 @@ module.exports = async ({
 
 	const futuresMarketManager = await deployer.deployContract({
 		name: 'FuturesMarketManager',
-		source: useOvm ? 'FuturesMarketManager' : 'EmptyFuturesMarketManager',
-		args: useOvm ? [account, addressOf(ReadProxyAddressResolver)] : [],
+		source: 'FuturesMarketManager',
+		args: [account, addressOf(ReadProxyAddressResolver)],
 		deps: ['ReadProxyAddressResolver'],
 	});
-
-	if (!useOvm) {
-		return;
-	}
 
 	// This belongs in dapp-utils, but since we are only deploying futures on L2,
 	// I've colocated it here for now.
