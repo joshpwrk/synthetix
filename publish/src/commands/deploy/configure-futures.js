@@ -19,8 +19,6 @@ module.exports = async ({
 }) => {
 	console.log(gray(`\n------ CONFIGURE FUTURES MARKETS ------\n`));
 
-	if (!useOvm) return;
-
 	const { FuturesMarketSettings: futuresMarketSettings, SystemStatus } = deployer.deployedContracts;
 
 	const { futuresMarkets } = loadAndCheckRequiredSources({
